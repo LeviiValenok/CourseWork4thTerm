@@ -12,7 +12,7 @@ string *filesArray;
 string* permissionArray;
 string previousDirectory;
 string currentDirectory;
-int depth = 0;
+int depthDir = 0;
 //using namespace std;
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent) , ui(new Ui::MainWindow)
 {
@@ -85,6 +85,12 @@ void outputData(Ui::MainWindow *ui){
     }
     ui->lineEdit_2->setText(QString::fromStdString(currentDirectory));
     ui->lineEdit->clear();
+    if(depthDir ==0){
+        ui->knopka->setDisabled(true);
+    }
+    else {
+        ui->knopka->setEnabled(true);
+    }
 }
 
 
@@ -98,7 +104,7 @@ MainWindow::~MainWindow() {
 
 void MainWindow::on_pushButton_clicked()
 {
-
+    depthDir = depthDir+1;
     QString qstr = ui->lineEdit->text();
     string str = qstr.toStdString();
     string searchDirectory =  currentDirectory + "/" +  str;
@@ -113,6 +119,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_knopka_clicked()
 {
+    depthDir--;
     numberOfDirectories =0;
     numberOfFiles = 0;
     numberOfPermission = 0;
@@ -134,12 +141,20 @@ void MainWindow::on_knopka_clicked()
 
 void MainWindow::on_tableWidget_cellClicked(int row, int column)
 {
+    if(column == 1){
+        return;
+    }
+    if (row > numberOfDirectories-1){
+        return;
+    }
+    depthDir++;
     numberOfDirectories =0;
     numberOfFiles = 0;
     numberOfPermission = 0;
     QTableWidgetItem *qitem = ui->tableWidget->item(row, column);
     QString qstr = qitem->text();
     string str = qstr.toStdString();
+    currentDirectory = str;
     directoryBrowsing(str,directoriesArray, filesArray, permissionArray, numberOfDirectories, numberOfFiles, numberOfPermission);
     outputData(ui);
 
