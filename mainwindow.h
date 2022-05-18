@@ -15,7 +15,16 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private:
+
+
+public slots:
+    void on_pushButton_clicked();
+
+public:
     Ui::MainWindow *ui;
+private slots:
+    void on_knopka_clicked();
+    void on_tableWidget_cellClicked(int row, int column);
 };
+void outputData(Ui::MainWindow *ui);
 #endif // MAINWINDOW_H

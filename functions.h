@@ -42,10 +42,10 @@ using namespace std;
 
 void mainActions();
 
-void startPage(string* &directoriesArray, string* &filesArray,
-               int &numberOfDirectories, int &numberOfFiles);
+string startPage(string &previousDirectory, string* &directoriesArray, string* &filesArray, string* &permissionArray,
+               int &numberOfDirectories, int &numberOfFiles, int &numberOfPermission);
 
-void displayPermission (int st_mode );
+char* displayPermission (int st_mode );
 
-unsigned directoryBrowsing(string introducedDir, string* &directoriesArray, string* &filesArray,
-                           int &numberOfDirectories, int &numberOfFiles);
+unsigned directoryBrowsing(string introducedDir, string* &directoriesArray, string* &filesArray, string* &permissionArray,
+                           int &numberOfDirectories, int &numberOfFiles, int &numberOfPermission);
