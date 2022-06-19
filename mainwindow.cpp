@@ -21,11 +21,6 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent) , ui(new Ui::MainWi
     filesArray = new string[1];
     previousDirectory = startPage(previousDirectory, directoriesArray, filesArray, permissionArray, numberOfDirectories, numberOfFiles, numberOfPermission);
     currentDirectory = previousDirectory;
-    //    QTableWidget *tableWidget = new QTableWidget(this);
-//    tableWidget->setRowCount(numberOfDirectories+numberOfFiles+1);
-//    tableWidget->setColumnCount(2);
-//    QTableWidgetItem *newItem = new QTableWidgetItem(.arg(1*1));
-//    tableWidget->setItem(1,1, newItem);
 
    outputData(ui);
 
@@ -75,9 +70,9 @@ void outputData(Ui::MainWindow *ui){
         ui->tableWidget->setItem(i,0, item);
     }
     counter =0;
-    for(int i=numberOfDirectories;i<numberOfDirectories+numberOfFiles;i++){
+    for(int i=0;i<numberOfDirectories+numberOfFiles;i++){
         QString qstr = QString::fromStdString(permissionArray[counter]);
-        cout << permissionArray[counter];
+
         counter++;
         QTableWidgetItem *item = new QTableWidgetItem();
         item->setText(qstr);
@@ -104,9 +99,13 @@ MainWindow::~MainWindow() {
 
 void MainWindow::on_pushButton_clicked()
 {
-    depthDir = depthDir+1;
+
     QString qstr = ui->lineEdit->text();
     string str = qstr.toStdString();
+    if (str == ""){
+        return;
+    }
+    depthDir = depthDir+1;
     string searchDirectory =  currentDirectory + "/" +  str;
     previousDirectory = currentDirectory;
     currentDirectory = searchDirectory;

@@ -1,4 +1,5 @@
 QT       += core gui
+DEFINES += MYSHAREDLIB_LIBRARY
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

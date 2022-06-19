@@ -24,79 +24,6 @@ return previousDirectory;
 
 }
 
-void mainActions(){
-//    directoriesArray = new string[1];
-//     filesArray = new string[1];
-
-
-////            printf("Choose a directory to open\n"
-////                   "Enter -1 to exit\n");
-//            cout << "Choice a directory to open" << endl << "Enter -1 to exit" << endl;
-//            fflush(stdin);
-//            rewind(stdin);
-//            //cin >> choice;
-//           int choice = 3;
-
-//            //scanf("%d", &choice);
-//            if (choice == -1) {
-
-//            }
-//            depth++;
-
-//            //save previous directory to back to the previous folder
-
-
-//            temp = directoriesArray[choice];
-//           // strncpy(temp, directoriesArray[choice], PATH_MAX);
-//            previousDirectory = directoriesArray[choice];
-//           // strncpy(previousDirectory, directoriesArray[choice], PATH_MAX);
-
-//            //delete directoriesArray;
-
-//            //delete filesArray;
-
-//            directoriesArray = new string[1];
-//            filesArray = new string[1];
-////            directoriesArray = (char **) calloc(1, sizeof(char *));
-////            directoriesArray[0] = (char *) calloc(PATH_MAX, sizeof(char));
-////            filesArray = (char **) calloc(1, sizeof(char *));
-////            filesArray[0] = (char *) calloc(PATH_MAX, sizeof(char));
-
-//            numberOfFiles = 0;
-//            numberOfDirectories = 0;
-
-//            directoryBrowsing(temp, directoriesArray, filesArray, numberOfDirectories, numberOfFiles);
-
-
-
-
-//        //go to previous folder
-//        int i = 0;
-//        for (i = previousDirectory.size(); previousDirectory[i] != '/'; i--){
-//            previousDirectory[i] = '\0';
-//        }
-//        previousDirectory[i] = '\0';
-
-
-//        //delete directoriesArray;
-
-
-//        //delete filesArray;
-
-//        directoriesArray = new string[1];
-//         filesArray = new string[1];
-////        directoriesArray = (char **) calloc(1, sizeof(char *));
-////        directoriesArray[0] = (char *) calloc(PATH_MAX, sizeof(char));
-////        filesArray = (char **) calloc(1, sizeof(char *));
-////        filesArray[0] = (char *) calloc(PATH_MAX, sizeof(char));
-
-//        numberOfFiles = 0;
-//        numberOfDirectories = 0;
-
-//        directoryBrowsing(previousDirectory, directoriesArray, filesArray, numberOfDirectories, numberOfFiles);
-
-//        //return EXIT_SUCCESS;
-}
 
 
 char* displayPermission (int st_mode )
@@ -126,7 +53,6 @@ unsigned directoryBrowsing(string introducedDir, string* &directoriesArray, stri
     mode_t status;
     dir = opendir(introducedDir.c_str());
     if( dir == NULL ) {
-        cout << "Error opening " << introducedDir << ":" <<strerror(errno);
         return 0;
     }
     entry = readdir(dir);
@@ -149,18 +75,15 @@ unsigned directoryBrowsing(string introducedDir, string* &directoriesArray, stri
 
                 }
                 directoriesArray = temp;
-                
-                
-//                resultPermission = string(displayPermission(entryInfo.st_mode));
-//                permissionArray[numberOfPermission] = resultPermission;
-//                numberOfPermission++;
-//                temp = new string[numberOfPermission + 1];
-//                for (int i = 0; i < numberOfPermission; i++){
-//                    temp[i] = permissionArray[i];
-//                }
-//                permissionArray = temp;
-                
-                cout <<"\t" <<pathName << "\t\t\t\n";
+
+                resultPermission = string(displayPermission(entryInfo.st_mode));
+                permissionArray[numberOfPermission] = resultPermission;
+                numberOfPermission++;
+                temp = new string[numberOfPermission + 1];
+                for (int i = 0; i < numberOfPermission; i++){
+                    temp[i] = permissionArray[i];
+                }
+                permissionArray = temp;
             }
             else if(S_ISREG(entryInfo.st_mode)) {
                   filesArray[numberOfFiles] = pathName;
@@ -179,8 +102,6 @@ unsigned directoryBrowsing(string introducedDir, string* &directoriesArray, stri
                       temp[i] = permissionArray[i];
                   }
                   permissionArray = temp;
-                  
-                   cout <<"\t" <<pathName << "\t\t\t\n";
 
             }
             else if(S_ISLNK(entryInfo.st_mode)) {
@@ -194,10 +115,6 @@ unsigned directoryBrowsing(string introducedDir, string* &directoriesArray, stri
                         temp[i] = filesArray[i];
                     }
                     filesArray = temp;
-                    //delete temp;
-                     cout <<"\t ->" <<pathName << "\t" << targetName << "\n";
-                    //displayPermission(entryInfo.st_mode);
-                   // printf("\t-l %s -> %s\n", pathName, targetName);
                 }
                 else {
                     printf("\t%s -> (invalid symbolic link!)\n", pathName);

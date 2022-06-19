@@ -2,6 +2,8 @@
 #define FUNCTIONS_H
 
 #endif // FUNCTIONS_H
+
+
 #include <cstdio>
 #include <iostream>
 #include <string>
@@ -37,10 +39,10 @@
 #define _lseek lseek
 #define stricmp strcasecmp
 #endif
+
+
 using namespace std;
 
-
-void mainActions();
 
 string startPage(string &previousDirectory, string* &directoriesArray, string* &filesArray, string* &permissionArray,
                int &numberOfDirectories, int &numberOfFiles, int &numberOfPermission);

@@ -29,9 +29,9 @@
    <widget class="QTableView" name="tableView">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>-11</x>
       <y>0</y>
-      <width>1500</width>
+      <width>1521</width>
       <height>1000</height>
      </rect>
     </property>
@@ -74,9 +74,9 @@ p, li { white-space: pre-wrap; }
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>22</x>
-      <y>24</y>
-      <width>201</width>
+      <x>20</x>
+      <y>20</y>
+      <width>431</width>
       <height>41</height>
      </rect>
     </property>
@@ -87,7 +87,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QLineEdit" name="lineEdit_2">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>690</x>
       <y>20</y>
       <width>411</width>
       <height>41</height>
@@ -100,9 +100,9 @@ p, li { white-space: pre-wrap; }
    <widget class="QCommandLinkButton" name="knopka">
     <property name="geometry">
      <rect>
-      <x>750</x>
+      <x>1430</x>
       <y>20</y>
-      <width>31</width>
+      <width>41</width>
       <height>41</height>
      </rect>
     </property>
@@ -110,16 +110,20 @@ p, li { white-space: pre-wrap; }
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text">
-     <string>CommandLinkButton</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Downloads/free-icon-back-arrow-340.png</normaloff>../Downloads/free-icon-back-arrow-340.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>30</y>
+      <x>470</x>
+      <y>20</y>
       <width>41</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
